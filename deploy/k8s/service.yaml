@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: agent-budget-controller
+  namespace: agent-budget-controller
+spec:
+  selector: {app.kubernetes.io/name: agent-budget-controller}
+  ports: [{port: 80, targetPort: 8080}]

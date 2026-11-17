@@ -1,0 +1,9 @@
+services:
+  agent-budget-controller:
+    build: .
+    ports: ["8080:8080"]
+    environment:
+      AGENT_BUDGET_CONTROLLER_CONFIG: /app/config/development.toml
+      AGENT_BUDGET_CONTROLLER_HTTP__HOST: 0.0.0.0
+    volumes:
+      - ./var:/app/var

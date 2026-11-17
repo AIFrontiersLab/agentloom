@@ -1,0 +1,26 @@
+flowchart LR
+  b1["Resource Monitor"]
+  b2["Budget Policy Learner"]
+  b3["Decision Engine"]
+  b4["Agent"]
+  b5["LLM/Tools"]
+  b4 -->|1. Initiates Action| b3
+  b3 -->|2. Checks and Proceeds if Within Limits| b5
+  b5 -->|3. Logs Resource Usage| b1
+  b1 -->|4. Sends Usage Data| b2
+  b2 -->|5. Updates Policy| b3
+
+flowchart TB
+  subgraph happy [Happy path]
+    h_b1["Resource Monitor"]
+    h_b2["Budget Policy Learner"]
+    h_b3["Decision Engine"]
+    h_b4["Agent"]
+    h_b5["LLM/Tools"]
+    h_b1 --> h_b2
+    h_b2 --> h_b3
+    h_b3 --> h_b4
+    h_b4 --> h_b5
+  end
+  fail["Failure / abstain"]
+  h_b5 -.-> fail

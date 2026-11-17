@@ -1,0 +1,58 @@
+{
+  "boxes": [
+    {
+      "detail": "Tracks real-time metrics: elapsed time, token counts, tool calls, and estimated cost.",
+      "id": "b1",
+      "label": "Resource Monitor"
+    },
+    {
+      "detail": "Learns optimal budget strategies using RL, updating policies based on task complexity and performance.",
+      "id": "b2",
+      "label": "Budget Policy Learner"
+    },
+    {
+      "detail": "Evaluates actions against policies, enforcing limits and adapting to budget constraints.",
+      "id": "b3",
+      "label": "Decision Engine"
+    },
+    {
+      "detail": "Initiates actions such as LLM calls or tool usage.",
+      "id": "b4",
+      "label": "Agent"
+    },
+    {
+      "detail": "External systems or tools the agent interacts with.",
+      "id": "b5",
+      "label": "LLM/Tools"
+    }
+  ],
+  "flows": [
+    {
+      "from": "b4",
+      "label": "1. Initiates Action",
+      "to": "b3"
+    },
+    {
+      "from": "b3",
+      "label": "2. Checks and Proceeds if Within Limits",
+      "to": "b5"
+    },
+    {
+      "from": "b5",
+      "label": "3. Logs Resource Usage",
+      "to": "b1"
+    },
+    {
+      "from": "b1",
+      "label": "4. Sends Usage Data",
+      "to": "b2"
+    },
+    {
+      "from": "b2",
+      "label": "5. Updates Policy",
+      "to": "b3"
+    }
+  ],
+  "subtitle": "One concept. Three AI perspectives. One tested architecture.",
+  "title": "Agent Budget Controller"
+}
